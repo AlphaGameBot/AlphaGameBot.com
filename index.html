@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlphaGameBot - Your Ultimate Gaming Discord Bot</title>
+    <title>AlphaGameBot</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="AlphaGameBot is the ultimate Discord bot for gaming communities. Level up your server with user engagement features, leveling systems, and more!">
+    <meta name="keywords" content="discord bot, gaming bot, discord leveling, server engagement, alphagamebot, discord gaming">
+    <meta name="author" content="AlphaGameBot Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alphagamebot.com/">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alphagamebot.com/">
+    <meta property="og:title" content="AlphaGameBot - Level Up Your Discord Server">
+    <meta property="og:description" content="Enhance your Discord server with AlphaGameBot. XP systems, leaderboards, and engagement features all for free and open-source!">
+    <meta property="og:image" content="https://alphagamebot.com/images/og-image.png">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://alphagamebot.com/">
+    <meta name="twitter:title" content="AlphaGameBot - Your Ultimate Gaming Discord Bot">
+    <meta name="twitter:description" content="The free and open-source Discord bot that helps you level up your gaming community with engagement tools and leaderboards.">
+    <meta name="twitter:image" content="https://alphagamebot.com/images/twitter-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- Google Analytics tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9KRPJ3N08"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-G9KRPJ3N08');
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body class="bg-gray-900 text-white">
     <!-- Navigation -->
@@ -161,7 +200,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <h2 class="text-2xl font-bold">AlphaGameBot</h2>
-                    <p class="text-gray-400">© 2025 All rights reserved</p>
+                    <p class="text-gray-400">© 2025 Damien Boisvert. All rights reserved</p>
                 </div>
             
                 <div class="flex space-x-6">
@@ -204,6 +243,28 @@
         </div>
     </footer>
 
+    <!-- JSON-LD Structured Data for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AlphaGameBot",
+      "applicationCategory": "Discord Bot",
+      "operatingSystem": "Web",
+      "description": "A Discord bot for gaming communities with user leveling systems, engagement features, and global leaderboards",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "AlphaGameBot Team",
+        "url": "https://github.com/AlphaGameBot"
+      }
+    }
+    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>
