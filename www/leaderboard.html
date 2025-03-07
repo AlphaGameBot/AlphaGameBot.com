@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaGameBot - Leaderboard</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Check out the global leaderboard for AlphaGameBot users. See who's leading in XP and activity across all Discord servers.">
+    <meta name="keywords" content="discord bot leaderboard, gaming bot rankings, discord leveling, alphagamebot leaderboard">
+    <meta name="author" content="AlphaGameBot Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.alphagamebot.com/leaderboard.html">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.alphagamebot.com/leaderboard.html">
+    <meta property="og:title" content="AlphaGameBot - Global Leaderboard">
+    <meta property="og:description" content="Check out who's leading the rankings across all Discord servers using AlphaGameBot.">
+    <meta property="og:image" content="https://www.alphagamebot.com/images/og-image.png">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.alphagamebot.com/leaderboard.html">
+    <meta name="twitter:title" content="AlphaGameBot - Global Leaderboard">
+    <meta name="twitter:description" content="See who's leading the rankings across all servers using AlphaGameBot.">
+    <meta name="twitter:image" content="https://www.alphagamebot.com/images/twitter-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- Google Analytics tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9KRPJ3N08"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-G9KRPJ3N08');
+    </script>
+    
+    <link rel="stylesheet" href="tailwind.css" />
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 fixed w-full z-10">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold">AlphaGame<span class="text-blue-400">Bot</span></a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#features" class="hover:text-blue-400 transition">Features</a>
+                <a href="index.html#commands" class="hover:text-blue-400 transition">Commands</a>
+                <a href="index.html#faq" class="hover:text-blue-400 transition">FAQ</a>
+                <a href="leaderboard.html" class="text-blue-400 transition">Leaderboard</a>
+            </div>
+            <a href="https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=39859552415312&scope=bot" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition">Add to Discord</a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-24 pb-10 md:pt-32 md:pb-12 px-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Global Leaderboard</h1>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                See who's leading across all servers using AlphaGameBot. Compete for the top spots and show off your activity!
+            </p>
+        </div>
+    </header>
+
+    <!-- Leaderboard Section -->
+    <section class="py-10 px-6">
+        <div class="container mx-auto">
+            <!-- Leaderboard Controls -->
+            <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button type="button" class="px-4 py-2 text-sm font-medium bg-blue-600 text-white border border-gray-600 rounded-l-lg hover:bg-blue-700">
+                        All Time
+                    </button>
+                    <button type="button" class="px-4 py-2 text-sm font-medium bg-gray-700 text-white border border-gray-600 hover:bg-blue-700">
+                        Monthly
+                    </button>
+                    <button type="button" class="px-4 py-2 text-sm font-medium bg-gray-700 text-white border border-gray-600 rounded-r-lg hover:bg-blue-700">
+                        Weekly
+                    </button>
+                </div>
+                
+                <div class="relative w-full md:w-64">
+                    <input type="text" placeholder="Search by username" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="absolute right-2 top-2 text-gray-400 hover:text-white">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Leaderboard Table -->
+            <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+                <!-- Loading State - Shown by default -->
+                <div id="loading-state" class="py-10">
+                    <div class="flex justify-center mb-6">
+                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                    </div>
+                    <p class="text-center text-lg text-gray-400">Loading leaderboard data...</p>
+                    
+                    <!-- Skeleton loading rows -->
+                    <div class="mt-6 overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-700">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Rank</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">User</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Level</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">XP</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Server</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Skeleton rows -->
+                                <tr class="animate-pulse">
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-6"></div></td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="rounded-full bg-gray-700 h-10 w-10"></div>
+                                            <div class="ml-4">
+                                                <div class="h-4 bg-gray-700 rounded w-24"></div>
+                                                <div class="h-3 bg-gray-700 rounded w-16 mt-2"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4"><div class="h-6 bg-gray-700 rounded w-16"></div></td>
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-16"></div></td>
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-28"></div></td>
+                                </tr>
+                                <tr class="animate-pulse">
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-6"></div></td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="rounded-full bg-gray-700 h-10 w-10"></div>
+                                            <div class="ml-4">
+                                                <div class="h-4 bg-gray-700 rounded w-28"></div>
+                                                <div class="h-3 bg-gray-700 rounded w-16 mt-2"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4"><div class="h-6 bg-gray-700 rounded w-16"></div></td>
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-20"></div></td>
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-24"></div></td>
+                                </tr>
+                                <tr class="animate-pulse">
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-6"></div></td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="rounded-full bg-gray-700 h-10 w-10"></div>
+                                            <div class="ml-4">
+                                                <div class="h-4 bg-gray-700 rounded w-20"></div>
+                                                <div class="h-3 bg-gray-700 rounded w-16 mt-2"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4"><div class="h-6 bg-gray-700 rounded w-16"></div></td>
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-18"></div></td>
+                                    <td class="px-6 py-4"><div class="h-4 bg-gray-700 rounded w-32"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Error State - Hidden by default -->
+                <div id="error-state" class="py-12 text-center hidden">
+                    <svg class="w-16 h-16 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-xl font-medium text-red-400 mb-2">Unable to load leaderboard</h3>
+                    <p class="text-gray-400 mb-6">There was a problem fetching the leaderboard data</p>
+                    <button id="retry-button" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition">
+                        Try Again
+                    </button>
+                </div>
+                
+                <!-- Actual data table - Hidden by default -->
+                <div id="data-state" class="overflow-x-auto hidden">
+                    <table class="w-full">
+                        <thead class="bg-gray-700">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Rank</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">User</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Level</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">XP</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Server</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-700">
+                            <!-- Rows will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- No results state - Hidden by default -->
+                <div id="no-results-state" class="py-12 text-center hidden">
+                    <svg class="w-16 h-16 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-xl font-medium text-gray-300 mb-2">No results found</h3>
+                    <p class="text-gray-400">Try adjusting your search or filter criteria</p>
+                </div>
+            </div>
+            
+            <!-- Pagination - Hidden by default -->
+            <div id="pagination" class="mt-8 flex justify-center items-center hidden">
+                <button id="prev-page" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-l-md text-white transition disabled:opacity-50" disabled>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <span id="page-indicator" class="px-4 py-1 bg-gray-700 text-white">Page 1 of 10</span>
+                <button id="next-page" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-r-md text-white transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Placeholder note - Remove this when loading is implemented -->
+            <div id="placeholder-note" class="mt-8 text-center text-gray-400 text-sm">
+                <p>This leaderboard will be connected to live data soon.</p>
+                <p>Check back for real-time rankings!</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Banner -->
+    <section class="py-12 px-6 bg-gradient-to-r">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">Want to see your name on the leaderboard?</h2>
+            <p class="text-lg text-gray-200 mb-6">Add AlphaGameBot to your Discord server and start earning XP today!</p>
+            <a href="https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=39859552415312&scope=bot" class="bg-white text-blue-700 hover:bg-gray-200 px-6 py-3 rounded-lg text-lg font-semibold transition inline-block">
+                Add to Discord
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-12 px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold">AlphaGameBot</h2>
+                    <p class="text-gray-400">© 2025 Damien Boisvert. All rights reserved</p>
+                </div>
+            
+                <div class="flex space-x-6">
+                    <!-- logo: discord -->
+                    <a href="https://discord.gg/J6s8ERvKTe" class="text-gray-400 hover:text-white transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                        </svg>
+                    </a>
+                    <!-- logo: github -->
+                    <a href="https://github.com/AlphaGameBot" class="text-gray-400 hover:text-white transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8 text-center md:text-left">
+                <a href="legal/terms.html" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                <a href="legal/privacy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                <a href="https://discord.gg/J6s8ERvKTe" class="text-gray-400 hover:text-white transition">Support</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script src="leaderboard.js"></script>
+</body>
+</html>
