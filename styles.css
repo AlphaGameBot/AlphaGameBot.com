@@ -1,0 +1,127 @@
+/* Custom styles that complement Tailwind CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Custom gradient background for hero section */
+header {
+  background: linear-gradient(to bottom, #111827, #1f2937);
+  position: relative; /* For the scroll indicator positioning */
+  height: 100vh; /* Make hero take full viewport height */
+  display: flex;
+  align-items: center;
+}
+
+/* Legal pages full-screen header */
+#legal-hero {
+  background: linear-gradient(to bottom, #111827, #1f2937);
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#legal-hero .container {
+  max-width: 800px;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animation for feature icons */
+.feature-icon:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Improved scroll reveal animations with reset support */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform; /* Optimize for animation performance */
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll indicator - updated for better interaction */
+#scroll-indicator {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  cursor: pointer; /* Add pointer cursor to indicate clickability */
+  padding: 10px; /* Add padding to increase clickable area */
+}
+
+#scroll-indicator:hover {
+  opacity: 1; /* Always fully visible on hover */
+  transform: translate(-50%, -5px); /* Slight upward movement on hover */
+}
+
+#scroll-indicator.hidden {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Back to top button */
+#back-to-top {
+  transition: all 0.3s ease;
+}
+
+#back-to-top:hover svg {
+  transform: translateY(-3px);
+}
+
+/* Delays for staggered animations */
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-600 {
+  transition-delay: 600ms;
+}
+
+/* Typing animation cursor */
+.cursor-blink {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
