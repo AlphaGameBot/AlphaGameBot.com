@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | AlphaGameBot</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Oops! The page you were looking for doesn't exist. Return to AlphaGameBot's homepage.">
+  <meta name="robots" content="noindex,follow">
+  
+  <!-- Favicon and Fonts -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <!-- Google Analytics tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9KRPJ3N08"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-G9KRPJ3N08');
+  </script>
+  
+  <!-- Tailwind CSS and Custom Styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* 404 page specific styles */
+    .error-text {
+      text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    /* Modify the robot container to better center the robot */
+    .robot-container {
+        position: relative;
+        height: 120px;
+        width: 100%;
+        margin: 40px 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .wandering-robot {
+        position: absolute;
+        width: 60px;
+        height: 80px;
+        /* Start at center position */
+        left: calc(50% - 30px); 
+        animation: wander 8s infinite alternate ease-in-out;
+    }
+    
+    /* Update the wander animation for smaller left-right movement */
+    @keyframes wander {
+        0% { transform: translateX(-30px) rotate(-5deg); }
+        50% { transform: translateX(0) rotate(0deg); }
+        100% { transform: translateX(30px) rotate(5deg); }
+    }
+
+    
+    .robot-head {
+      animation: bobbing 2s infinite alternate ease-in-out;
+    }
+    
+    .robot-eye {
+      animation: blink 4s infinite;
+    }
+    
+    .robot-antenna {
+      transform-origin: bottom center;
+      animation: antenna-twitch 3s infinite alternate ease-in-out;
+    }
+    
+    .search-light {
+      opacity: 0.7;
+      animation: flicker 1s infinite alternate;
+    }
+    
+    
+    @keyframes bobbing {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
+    }
+    
+    @keyframes blink {
+      0%, 48%, 52%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    @keyframes antenna-twitch {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
+    
+    @keyframes flicker {
+      0% { opacity: 0.5; }
+      100% { opacity: 0.8; }
+    }
+    
+    /* Reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .wandering-robot {
+        animation: none;
+        left: calc(50% - 30px);
+      }
+      
+      .robot-head, .robot-eye, .robot-antenna, .search-light {
+        animation: none;
+      }
+      
+      .animate-ping, .error-text {
+        animation: none;
+      }
+    }
+  </style>
+
+</head>
+<body class="bg-gray-900 text-white">
+  <!-- Navigation -->
+  <nav class="bg-gray-800 fixed w-full z-10">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold">AlphaGame<span class="text-blue-400">Bot</span></a>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html#features" class="hover:text-blue-400 transition">Features</a>
+        <a href="index.html#commands" class="hover:text-blue-400 transition">Commands</a>
+        <a href="index.html#faq" class="hover:text-blue-400 transition">FAQ</a>
+      </div>
+      <a href="https://discord.com/api/oauth2/authorize?client_id=946533554953809930&amp;permissions=39859552415312&amp;scope=bot" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition">Add to Discord</a>
+    </div>
+  </nav>
+
+  <!-- 404 Content (based on the given image) -->
+  <main class="min-h-screen flex items-center justify-center py-16 px-6">
+    <div class="container mx-auto max-w-4xl text-center">
+      <div class="bg-gray-800 rounded-lg p-10 shadow-xl">
+        
+        <!-- 404 Number with Animated Ping -->
+        <div class="mb-8 relative">
+          <h1 class="text-9xl font-bold text-blue-400 inline-block error-text relative">
+            404
+            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+              <div class="w-32 h-32 bg-blue-500 rounded-full opacity-10 animate-ping"></div>
+            </div>
+          </h1>
+        </div>
+        
+        <h2 class="text-3xl font-bold mb-4">Page Not Found</h2>
+        
+        <!-- Wandering Robot Animation -->
+        <div class="robot-container">
+          <svg class="wandering-robot" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+            <!-- Robot Body -->
+            <rect x="35" y="70" width="50" height="60" rx="5" fill="#3B82F6" />
+            <rect x="30" y="130" width="60" height="10" rx="3" fill="#1E40AF" />
+            
+            <!-- Robot Head -->
+            <g class="robot-head">
+              <rect x="40" y="40" width="40" height="30" rx="8" fill="#60A5FA" />
+              <rect x="45" y="35" width="5" height="10" rx="2" fill="#93C5FD" class="robot-antenna" />
+              <rect x="70" y="35" width="5" height="10" rx="2" fill="#93C5FD" class="robot-antenna" />
+            </g>
+            
+            <!-- Robot Eyes -->
+            <circle cx="55" cy="55" r="5" fill="#DBEAFE" />
+            <circle cx="55" cy="55" r="2" fill="#111827" class="robot-eye" />
+            <circle cx="75" cy="55" r="5" fill="#DBEAFE" />
+            <circle cx="75" cy="55" r="2" fill="#111827" class="robot-eye" />
+            
+            <!-- Robot Arms -->
+            <rect x="25" y="80" width="10" height="40" rx="5" fill="#60A5FA" />
+            <rect x="85" y="80" width="10" height="40" rx="5" fill="#60A5FA" />
+            
+            <!-- Search Light -->
+            <ellipse cx="60" cy="90" rx="20" ry="10" fill="#93C5FD" class="search-light" />
+          </svg>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
+          <a href="index.html" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg text-lg font-semibold transition">
+            <span class="flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
+              Return Home
+            </span>
+          </a>
+          <a href="https://discord.gg/J6s8ERvKTe" class="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg text-lg font-semibold transition">
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+              </svg>
+              Join Support Server
+            </span>
+          </a>
+        </div>
+        
+        <!-- Optional Quick Links (if needed) -->
+        <div class="border-t border-gray-700 pt-8 mt-8">
+          <p class="text-sm text-gray-500">Can't find what you're looking for?</p>
+          <a href="index.html#features" class="text-blue-400 hover:underline">Explore our features</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-8 px-6">
+    <div class="container mx-auto text-center">
+      <p class="text-gray-400">© 2025 AlphaGameBot. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Optional: Add interactivity to 404 page elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const errorText = document.querySelector('.error-text');
+      errorText.addEventListener('mouseover', () => {
+        errorText.style.transform = 'scale(1.05)';
+        errorText.style.transition = 'transform 0.3s ease';
+      });
+      errorText.addEventListener('mouseout', () => {
+        errorText.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>
